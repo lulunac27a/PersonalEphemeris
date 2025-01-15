@@ -49,7 +49,7 @@ def fmt_ra(angle):
     hf = 12 * angle / math.pi
     h = int(hf)        # Hours of RA
     m = (hf - h) * 60  # Minutes of RA
-    return "{:2d}h{:.0f}m".format(h,m)
+    return "{:2d}h{:02.0f}m".format(h,m)
 
 # Function to fully display a datetime object (the way I like to see it :-)
 def fmt_fulldatetime(dttm):
@@ -65,7 +65,7 @@ def fmt_datetime(dttm):
 def fmt_angle(a):
     a = 180 * a / math.pi # convert radians to degrees
     deg = int(a)
-    min = int( ((a - deg) * 60) + 0.5)
+    min = math.abs(int( ((a - deg) * 60) + 0.5))
     return "{:3d}:{:02d}".format(deg,min)
 
 # Function to format a Date object the way I like to see it
